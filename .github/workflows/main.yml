@@ -1,0 +1,8 @@
+name: Mygithub Actions
+'on': push
+jobs:
+  test: 
+  runs: ubuntu-latest
+  steps: 
+  '-run': echo "hello world"
+
