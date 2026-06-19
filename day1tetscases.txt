@@ -1,0 +1,154 @@
+Scenario 1: User Login Module
+
+The application provides a login page for registered users. The page contains a Username field, Password field, Login button, and a "Forgot Password" link. Username and Password are mandatory fields. Password should be masked while typing. Users with valid credentials should be redirected to the dashboard after successful login. Invalid credentials should display an appropriate error message. The application should support multiple attempts and maintain session security.
+
+Login Module Test Scenarios
+
+Verify that the user is successfully redirected to the Dashboard page upon entering valid username and password.
+Verify that an appropriate error message is displayed when invalid credentials are entered.
+Verify that mandatory field validation messages are displayed when username and/or password fields are left empty.
+Verify that the password field masks the entered characters.
+Verify that the "Forgot Password" link redirects the user to the Forgot Password page.
+Verify that Username field, Password field, and Login button are enabled.
+Verify login with an invalid username and valid password.
+Verify login with a valid username and invalid password.
+Verify the minimum and maximum length validations for Username and Password fields using Boundary Value Analysis.
+Verify login behavior when mandatory fields are not populated.
+Verify that a valid session is created after successful login.
+Verify that the user account is locked or its status changes after multiple invalid login attempts.
+Verify that error messages are displayed correctly with appropriate text, color, and alignment.
+Verify that the application prevents SQL Injection attacks.
+Verify that the application prevents Cross-Site Scripting (XSS) attacks.
+Verify that the Dashboard page cannot be accessed directly by entering the URL without authentication.
+Verify browser Back and Forward button behavior after login and logout.
+Verify session timeout functionality after a period of inactivity.
+Verify that the Forgot Password functionality works correctly.
+Verify all fields are enabled.
+Verify OTP/verification code is sent to the registered email or mobile number.
+Verify proper success and error messages are displayed.
+Verify the response time of OTP generation.
+Verify that a session token is generated after successful login.
+Verify that the login request is sent over HTTPS.
+Verify that sensitive information is encrypted during transmission.
+Verify that the API request payload contains valid and correctly formatted data.
+Verify that the API returns appropriate HTTP status codes (200, 400, 401, etc.).
+Verify login with null values.
+Verify successful login message is displayed.
+Verify that the correct API endpoint is triggered during login.
+Verify the response time of the login request.
+Verify field labels, placeholders, and UI alignment.
+Verify the application behavior when leading and trailing spaces are entered.
+Verify login using special characters.
+Verify copy-paste functionality in the Password field.
+Verify login behavior with expired sessions.
+Verify concurrent login behavior from multiple browsers/devices.
+Verify Remember Me functionality (if applicable).
+Verify Caps Lock indication on the password field (if supported).
+Verify application behavior under slow network conditions.
+Verify accessibility aspects such as keyboard navigation and tab order.
+Verify login functionality using the Enter key.
+Verify the tab order between Username, Password, Forgot Password link, and Login button.
+Verify that the Password field does not display plain text in browser developer tools.
+Verify that cookies are marked as Secure and HttpOnly.
+Verify that session cookies are deleted after logout.
+Verify that the user cannot access authenticated pages after logout using the browser Back button.
+Verify that the session token changes after every successful login (Session Fixation prevention).
+Verify concurrent login behavior from multiple browsers or devices.
+Verify application behavior when the internet connection is interrupted during login.
+Verify login functionality under slow network conditions.
+Verify browser compatibility across Chrome, Firefox, Edge, and Safari.
+Verify login functionality on different screen resolutions and devices.
+Verify that password is not stored in browser cache or page source.
+Verify that sensitive information is not exposed in URLs.
+Verify that unauthorized API requests return appropriate HTTP status codes (401/403).
+Verify API response structure for successful and failed login requests.
+Verify that invalid request payloads are handled correctly.
+Verify login with expired session tokens.
+Verify login behavior when the server is unavailable.
+Verify the maximum number of simultaneous user sessions supported.
+Verify that special characters and Unicode characters are handled properly.
+Verify that Username and Password fields trim leading and trailing spaces.
+Verify that copy, cut, and paste operations in the Password field behave as per requirements.
+Verify Caps Lock warning indication (if supported).
+Verify accessibility using keyboard navigation only.
+Verify that field labels, placeholders, and tooltips are displayed correctly.
+Verify alignment and consistency of UI elements.
+Verify login response time meets performance requirements.
+Verify that repeated login requests do not cause duplicate sessions.
+Verify account unlock functionality after account lockout.
+Verify Remember Me functionality (if available).
+Verify login using different user roles and permissions.
+Verify audit logs are generated after successful and failed login attempts.
+Verify that password data is encrypted during transmission.
+Verify brute-force attack prevention mechanisms.
+Verify CAPTCHA functionality after multiple failed login attempts (if applicable).
+Verify that refresh (F5) does not resubmit login requests or create duplicate sessions.
+
+
+Scenario 2: User Registration Module
+
+The application allows new users to register by providing First Name, Last Name, Email Address, Mobile Number, Password, and Confirm Password. All fields are mandatory. Email address should be unique. Password and Confirm Password must match. Upon successful registration, the user should receive a confirmation message and be able to log in using the newly created account. Appropriate validations and error messages should be displayed for invalid inputs.
+
+
+User Registration Module Test Scenarios
+
+Verify that a user can successfully register with valid details.
+Verify that mandatory field validation messages are displayed when fields are left empty.
+Verify that invalid characters are not accepted in input fields.
+Verify that registration is not allowed when mandatory fields are not populated.
+Verify that the Email field accepts valid email formats and rejects invalid email formats.
+Verify that a success message is displayed after successful registration.
+Verify that appropriate error messages are displayed for invalid inputs.
+Verify that invalid registration details prevent the user from logging in.
+Verify that duplicate email addresses are not allowed.
+Verify that all fields and buttons are enabled.
+Verify that Password and Confirm Password match validation works correctly.
+Verify that Password and Confirm Password fields are masked.
+Verify that the user receives a confirmation message after successful registration.
+Verify that notifications or response messages are displayed correctly.
+Verify that clicking the Register button triggers the correct API endpoint.
+Verify that the registration response time meets requirements.
+Verify that sensitive information is encrypted during transmission.
+Verify that SQL Injection attacks are prevented.
+Verify that Cross-Site Scripting (XSS) attacks are prevented.
+Verify minimum and maximum field length validations using Boundary Value Analysis.
+Verify that error messages are displayed with proper color and formatting.
+Verify that field-specific error messages are displayed for invalid inputs.
+Verify that registration with existing user details and duplicate email addresses is not allowed.
+Verify that registration fails when Password and Confirm Password do not match.
+Verify that registration requests are sent over HTTPS.
+Verify that data is encrypted during transmission.
+Verify registration functionality across different browsers.
+Verify registration functionality on different screen resolutions and devices.
+Verify that multiple users can register simultaneously without issues.
+Verify that browser Back and Forward buttons do not create duplicate sessions or duplicate registrations.
+Verify that multiple clicks on the Register button do not create duplicate user accounts.
+Verify that API responses contain correct data and response formats.
+Verify that valid and invalid input lengths are handled correctly.
+Verify registration using null values.
+Verify that First Name and Last Name fields do not accept numeric values.
+Verify that Mobile Number accepts only numeric values.
+Verify minimum and maximum password length requirements.
+Verify password complexity requirements (uppercase, lowercase, numbers, special characters).
+Verify that leading and trailing spaces are handled correctly.
+Verify that special characters are accepted or rejected according to requirements.
+Verify that field labels, placeholders, and UI alignment are correct.
+Verify keyboard navigation and tab order.
+Verify that pressing Enter submits the registration form.
+Verify that the page refresh does not create duplicate registrations.
+Verify that registration behavior is correct under slow network conditions.
+Verify application behavior when network connectivity is interrupted during registration.
+Verify that appropriate HTTP status codes are returned (200, 400, 409, etc.).
+Verify that unauthorized requests are rejected.
+Verify that cookies and session data are handled securely.
+Verify that audit logs are generated for successful and failed registration attempts.
+Verify CAPTCHA functionality (if available).
+Verify OTP or email verification functionality (if applicable).
+Verify that verification emails or OTPs are delivered to the correct user.
+Verify OTP expiration and resend functionality.
+Verify that account activation is successful after email verification.
+Verify that response messages are user-friendly and grammatically correct.
+Verify accessibility using keyboard navigation and screen readers.
+Verify browser compatibility across Chrome, Firefox, Edge, and Safari.
+Verify that sensitive data is not exposed in URLs or page source.
+Verify that duplicate accounts are not created due to repeated API requests.
