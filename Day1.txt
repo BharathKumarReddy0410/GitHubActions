@@ -1,0 +1,86 @@
+Day1:
+
+select: select statement used to fetch the data or retrieve the data from the table.
+
+syntax: select column1, column2 from tablename;
+
+
+where: where is sued to filter the record in table;
+
+Syntax: select column1, column2 from table where  attribute="value";
+
+
+Task 1
+
+Display all columns.
+A: select * from tablename;
+
+
+Display only employee name and salary.
+A select employee_name, salary from tablename;
+
+
+
+Display employees from IT department.
+select * from employees where department="IT";
+
+
+
+Display employees whose salary is greater than 60,000.
+select * from employees where salary>60000;
+
+
+
+Display employees whose city is Hyderabad.
+select * from employees where city="Hyderabad";
+
+
+
+
+Display employee names whose salary is less than 50,000.
+select employee_name from employees where salary<50000;
+
+
+
+Find employee with emp_id = 104.
+select * from employees where emp_id=104;
+
+
+
+Display name and city of all employees.
+select employee_name, city from employees;
+
+
+
+Display employees from HR department.
+select *  from employees where department="HR";
+
+Display employees with salary between 50,000 and 70,000 (use only WHERE with >= and <= for now).
+select * from employees where salary>=50000 and salary=<70000;
+
+
+
+
+
+
+Find all employees in Hyderabad having salary greater than 50,000.
+select * from employees where city="Hyderabad" and salary>50000;
+
+
+
+Find employees from IT department with salary greater than 60,000.
+select * from employees where department="IT" and salary>60000;
+
+
+
+Display names of employees who are not in HR.
+select emp_name from employees where department not in("HR");
+
+
+
+Find employees from Chennai with salary less than 90,000.
+select * from employees where city="Chennai" and salary<90000;
+
+
+Display employee names and departments whose salary is greater than 55,000.
+select emp_name, department from employees where salary>55000;
