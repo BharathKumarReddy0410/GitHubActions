@@ -1,0 +1,514 @@
+Scenario 1:
+
+Write 20 test cases for Gmail Login.
+
+Scenario 2:
+
+Write 25 test cases for ATM Withdrawal.
+
+Scenario 3:
+
+Write 30 test cases for Amazon Add to Cart.
+
+Scenario 4:
+
+Write 20 test cases for UPI Money Transfer.
+
+Scenario 5:
+
+Write 25 test cases for Password Reset functionality.
+
+
+Scenario 1:
+Write 20 test cases for Gmail Login.
+
+Functional & Validation
+-----------------------------------------------
+Verify Gmail login with valid credentials.
+Verify login with an invalid email format.
+Verify the email field is enabled and editable.
+Verify the email field does not accept empty values.
+Verify email validation when special characters are used incorrectly.
+Verify email length boundaries (minimum and maximum length).
+Verify only Gmail addresses are accepted and other domains (Yahoo, Outlook, etc.) are rejected if applicable.
+Verify invalid email formats such as @gmail.com, abc@gmail.ccom, and missing '@' are handled properly.
+Verify appropriate error messages are displayed for invalid email formats.
+Verify login with an unregistered Gmail account.
+Verify successful login redirects the user to the dashboard/home page.
+
+Network & Error Handling
+-------------------------------------------
+Verify login behaviour under slow or unstable network conditions.
+Verify account lock behaviour after multiple unsuccessful login attempts.
+Verify proper error messages are displayed for invalid credentials.
+
+Security Testing
+----------------------------------
+Verify SQL Injection attacks are prevented.
+Verify Cross-Site Scripting (XSS) attacks are prevented.
+Verify login uses HTTPS secure connection.
+Verify sensitive information is not exposed in the URL.
+Verify authentication cookies are created securely.
+Verify session cookies are cleared after logout.
+Verify unauthorized access returns HTTP 401 status code.
+Verify direct access to dashboard URL after logout is restricted.
+
+Session Management
+----------------------------
+Verify a session is created after successful login.
+Verify session timeout after inactivity and re-login requirement.
+Verify session is terminated after logout.
+
+Browser & Compatibility Testing
+---------------------------------------------
+Verify Gmail login functionality across different browsers.
+Verify login UI is responsive across different screen resolutions.
+Verify multiple simultaneous logins from different devices and their behaviour.
+
+API Testing
+-------------
+Verify the login request hits the correct API endpoint.
+Verify API response time is within acceptable limits.
+Verify the login API returns appropriate HTTP status codes.
+
+
+
+
+Scenario 2:
+Write 25 test cases for ATM Withdrawal.
+
+ATM Withdrawal Test Cases
+Functional Test Cases
+--------------------------------------------
+Verify that the ATM card is valid.
+Verify that the account linked to the card is active.
+Verify successful cash withdrawal with valid card, PIN, and sufficient balance.
+Verify transaction failure with invalid card details.
+Verify transaction with an expired or invalid card.
+Verify transaction with a valid card but blocked account.
+Verify transaction with insufficient account balance.
+Verify transaction when account balance is zero.
+Verify success message after successful withdrawal.
+Verify proper error message for invalid details.
+Verify account lock after maximum unsuccessful PIN attempts.
+Verify PIN is masked while entering.
+Verify transaction fails with incorrect PIN.
+Verify the exact amount is debited from the account.
+Verify the cash dispensed amount matches the withdrawal amount.
+Verify transaction status (Success, Failed, Pending).
+Verify account balance is updated correctly after withdrawal.
+Verify daily withdrawal limit restrictions.
+Verify withdrawal amount boundary values (49999, 50000, 50001).
+Verify ATM dispenses only supported denominations (₹100, ₹200, ₹500, etc.).
+Verify amount displayed on screen before confirmation is correct.
+Verify Back and Cancel buttons function properly.
+Verify SMS notification is sent after successful withdrawal.
+Verify transaction response is sent to the correct account holder.
+Verify transaction completion time is within requirements.
+
+Network and Session Test Cases
+---------------------------------------------------
+Verify transaction under slow network conditions.
+Verify behavior when network goes down during transaction.
+Verify session timeout during idle state.
+Verify session timeout during transaction.
+Verify session is terminated after transaction completion.
+Verify transaction amount is reversed if failure occurs after PIN entry.
+Verify transaction rollback if cash is not dispensed.
+Verify cash dispensing system recovery after failure.
+
+Hardware Failure Test Cases
+---------------------------------------
+Verify behavior when card is removed before entering PIN.
+Verify behavior when card is removed after PIN entry but before cash dispensing.
+Verify behavior when card is removed during transaction.
+Verify power failure during transaction.
+Verify transaction status after ATM restart following power failure.
+Verify amount reversal when power failure occurs before cash dispensing.
+Verify amount is not debited twice after system recovery.
+Verify cash dispenser trigger mechanism works correctly.
+
+Security Test Cases
+---------------------------------------------------
+Verify multiple invalid PIN attempts lock the card.
+Verify special characters are not accepted in PIN field.
+Verify PIN minimum and maximum length using Boundary Value Analysis.
+Verify unauthorized access is prevented.
+Verify sensitive information is not displayed on screen.
+Verify session data is cleared after transaction.
+Verify secure communication between ATM and bank server.
+
+Performance and Usability Test Cases
+-----------------------------------------
+Verify response time of ATM transaction.
+Verify user-friendly interface and messages.
+Verify transaction status messages are displayed correctly.
+Verify multiple consecutive withdrawals respect daily limits.
+Verify transaction with maximum allowed withdrawal amount.
+Verify receipt generation after successful transaction.
+Verify behavior when ATM runs out of cash.
+Verify cash dispensing accuracy.
+Verify transaction logs are recorded properly.
+
+
+
+
+Scenario 3:
+Write 30 test cases for Amazon Add to Cart.Amazon Add to Cart – Test Cases
+Functional Testing
+---------------------------------------------------------
+Verify the Add to Cart button is visible.
+Verify the Add to Cart button is enabled.
+Verify clicking Add to Cart invokes the correct API endpoint.
+Verify the selected item is added successfully.
+Verify a success message is displayed after adding an item.
+Verify the cart count is incremented.
+Verify the item appears in the cart page.
+Verify the cart subtotal amount is updated correctly.
+Verify the correct product (size, color, quantity) is added.
+Verify one click adds one item.
+Verify multiple clicks increase quantity correctly.
+Verify Remove button is visible and enabled.
+Verify removed items can be added again.
+Verify cart items persist for a long duration.
+Verify all products have Add to Cart enabled when in stock.
+Negative Testing
+----------------------------------------------------------------
+Verify out-of-stock items cannot be added.
+Verify maximum cart limit restrictions.
+Verify adding items beyond the cart limit.
+Verify quantity limits per customer.
+Verify duplicate items update quantity instead of creating duplicate rows.
+Verify unauthorized users cannot add items through direct URLs.
+Verify invalid login sessions prevent cart operations.
+Verify session expiration while adding items.
+Verify adding restricted products beyond purchase limits.
+Session and Recovery Testing
+--------------------------------------------------------------------
+Verify cart data persists after logout and login.
+Verify cart remains intact after browser refresh.
+Verify cart remains after application restart.
+Verify phone power off during Add to Cart operation.
+Verify network interruption during Add to Cart.
+Verify session timeout during Add to Cart.
+Verify recovery after server failure.
+Verify cart remains intact after browser crash.
+Verify direct URL access without login redirects correctly.
+Verify cart ID remains stable after re-login.
+Concurrency Testing
+-----------------------------------------------------------------------------
+Verify simultaneous Add to Cart operations from multiple browsers.
+Verify same account used on multiple devices updates cart correctly.
+Verify concurrent requests do not create duplicate products.
+API Testing
+---------------------------------------------------------------------------
+Verify Add to Cart hits the correct endpoint.
+Verify correct request payload is sent.
+Verify response status code is 200 for success.
+Verify proper error codes are returned for failures.
+Verify response time meets requirements.
+Verify quantity updates correctly in API response.
+Verify cart ID and product ID are correct.
+Verify duplicate API requests are handled properly.
+UI and Usability Testing
+-----------------------------------------------------------------------
+Verify Add to Cart button color and highlighting.
+Verify button placement is user friendly.
+Verify Remove button is visible.
+Verify cart icon count updates immediately.
+Verify button visibility across different screen resolutions.
+Verify responsiveness on mobile, tablet, and desktop.
+Verify compatibility across browsers.
+Verify UI behavior in landscape and portrait modes.
+Security Testing
+------------------------------------------------------------------------
+Verify unauthorized access to cart APIs is restricted.
+Verify session tokens are validated.
+Verify SQL Injection prevention.
+Verify XSS prevention.
+Verify sensitive data is not exposed in URLs.
+Verify users cannot access another user's cart.
+Verify API rejects manipulated cart IDs.
+Important Missing Scenarios
+Inventory Validation
+------------------------------------------------
+
+✅ Verify inventory count decreases after purchase.
+✅ Verify adding the last available item to cart.
+✅ Verify item becomes unavailable if stock reaches zero.
+
+Pricing Scenarios
+
+✅ Verify discounted price in cart.
+✅ Verify coupon price calculation.
+✅ Verify tax and shipping calculation.
+✅ Verify subtotal calculation after quantity changes.
+
+Wishlist Interaction
+
+✅ Verify moving item from Wishlist to Cart.
+✅ Verify moving item from Cart to Wishlist.
+
+Browser Storage
+
+✅ Verify cart persistence using cookies/local storage.
+✅ Verify cookies are cleared after logout if required.
+
+Performance
+
+✅ Verify cart behaviour under heavy load.
+✅ Verify adding 100+ items to cart.
+✅ Verify page performance with a large cart.
+
+Accessibility
+
+✅ Verify keyboard navigation.
+✅ Verify screen reader support.
+✅ Verify tab order.
+✅ Verify button labels for accessibility.
+
+
+
+Scenario 4:
+Write 20 test cases for UPI Money Transfer.
+UPI Money Transfer Test Cases
+Functional Test Cases
+Verify money transfer is successful with valid receiver details and valid UPI PIN.
+Verify transfer fails with invalid receiver details.
+Verify success message is displayed after successful transfer.
+Verify appropriate error message is displayed for failed transactions.
+Verify transaction status is displayed correctly (Success/Pending/Failed).
+Verify receiver details are validated before transfer.
+Verify transfer to inactive, blocked, or closed receiver account fails.
+Verify amount is deducted from sender and credited to receiver correctly.
+Verify sender balance is updated after successful transfer.
+Verify receiver receives updated balance.
+Verify sender and receiver receive notifications after successful transfer.
+Verify transfer without selecting a receiver is not allowed.
+Verify transaction with null or empty values.
+Verify transfer with negative amount is not allowed.
+Verify transfer amount greater than available balance is rejected.
+Verify transaction with invalid UPI PIN.
+Verify transaction with correct UPI PIN.
+Verify transfer above daily limit is restricted.
+Verify daily transfer limit using Boundary Value Analysis (99999, 100000, 100001).
+Verify duplicate clicking on Pay button does not create multiple transactions.
+Verify Pay button is disabled after first click until response is received.
+Verify transaction reference ID is generated uniquely.
+Session and Recovery Testing
+Verify session is created after login.
+Verify session timeout during transaction.
+Verify retry mechanism after session timeout.
+Verify transaction rollback if failure occurs after amount debit.
+Verify amount reversal when transaction fails midway.
+Verify transaction behavior when phone switches off during transfer.
+Verify transaction behavior when battery drains after entering UPI PIN.
+Verify session logout during transaction.
+Verify session is cleared after logout.
+Verify cache is cleared after logout.
+Verify cookies/session tokens are invalidated after logout.
+Verify direct URL access after logout redirects to login page.
+Verify transaction cannot continue after logout.
+Network Failure Test Cases
+Verify transfer under slow network conditions.
+Verify network failure during transaction.
+Verify transaction status when internet disconnects midway.
+Verify recovery after network restoration.
+Verify transaction status synchronization after reconnecting.
+Verify no duplicate transaction is created after retry.
+Verify transaction status message is received within required time.
+Security Test Cases
+Verify transaction data is encrypted.
+Verify HTTPS communication is used.
+Verify correct API endpoint is invoked.
+Verify unauthorized users cannot perform transactions.
+Verify SQL Injection prevention.
+Verify Cross-Site Scripting (XSS) prevention.
+Verify account lock after maximum invalid UPI PIN attempts.
+Verify special characters are not accepted in numeric amount fields.
+Verify sensitive information is not exposed in URLs.
+Verify session hijacking is prevented.
+Verify replay attacks are prevented.
+Concurrency Test Cases
+Verify simultaneous login on multiple devices.
+Verify same transaction from multiple devices does not create duplicates.
+Verify transaction IDs remain unique across devices.
+Verify concurrent transactions maintain consistency.
+Verify multiple Pay button clicks do not create multiple transactions.
+Performance and API Testing
+Verify response time is within SLA.
+Verify API returns proper status codes.
+Verify correct request payload is sent.
+Verify response messages are user friendly.
+Verify transaction status API returns correct status.
+Verify transaction logs are generated properly.
+Compatibility and UI Testing
+Verify transaction functionality across different screen resolutions.
+Verify portrait and landscape orientation support.
+Verify UI responsiveness across devices.
+Verify compatibility across Android and iOS.
+Verify error messages are user friendly.
+Verify accessibility and readability of transaction screens.
+Missing Important Test Cases
+Pending Transaction Scenarios
+
+✅ Verify pending transaction eventually changes to Success or Failed.
+
+Self Transfer
+
+✅ Verify transfer to own account.
+
+Receiver Not Registered with UPI
+
+✅ Verify transfer to non-UPI users.
+
+QR Code Payment
+
+✅ Verify payment using QR code.
+
+Transaction History
+
+✅ Verify successful transactions appear in history.
+
+Notifications
+
+✅ Verify push notification, SMS, and email notifications.
+
+Beneficiary Validation
+
+✅ Verify recently added beneficiary restrictions.
+
+Bank Server Failure
+
+✅ Verify behavior when bank server is down.
+
+Daily Transaction Count Limit
+
+✅ Verify maximum number of transactions allowed per day.
+
+Currency Validation
+
+✅ Verify decimal values and invalid formats.
+
+Reconciliation
+
+✅ Verify no money loss when sender is debited but receiver is not credited.
+
+Chargeback Handling
+
+✅ Verify refund and reconciliation process for failed transactions.
+
+
+
+Scenario 5:
+Write 25 test cases for Password Reset functionality.
+
+Scenario 5: Password Reset Functionality – Test Cases
+Functional Test Cases
+Verify the Password Reset button is visible and enabled.
+Verify clicking Password Reset navigates to the correct page.
+Verify all fields on the Password Reset page are enabled.
+Verify empty password fields are not accepted.
+Verify password length meets minimum and maximum requirements.
+Verify password boundary values using Boundary Value Analysis.
+Verify the new password cannot be the same as the old password.
+Verify New Password and Confirm Password must match.
+Verify appropriate error messages are displayed for mismatched passwords.
+Verify password reset request is accepted only for registered email addresses.
+Verify success message after password reset.
+Verify notification (email/SMS) is sent after successful password reset.
+Verify login using the new password succeeds.
+Verify login using the old password fails.
+Verify user is redirected properly after successful login.
+Validation Test Cases
+Verify passwords containing only spaces are rejected.
+Verify password complexity rules are enforced.
+Verify passwords with special characters are accepted according to requirements.
+Verify null or empty values are not accepted.
+Verify maximum allowed password length.
+Verify minimum allowed password length.
+Verify password field masking.
+Verify copy-paste behavior in password fields according to requirements.
+Session Management
+Verify session timeout during password reset.
+Verify session expiration invalidates the reset process.
+Verify session is cleared after logout.
+Verify reset page cannot be accessed directly after logout.
+Verify old reset URLs become invalid after successful password change.
+Verify browser Back button does not expose previous reset screens.
+Verify user is required to log in again after password reset.
+Security Testing
+Verify SQL Injection prevention.
+Verify Cross-Site Scripting (XSS) prevention.
+Verify HTTPS secure connection is used.
+Verify passwords are encrypted during transmission.
+Verify passwords are stored encrypted/hashed in the database.
+Verify cookies are regenerated after password change.
+Verify session tokens are invalidated after password reset.
+Verify unauthorized users cannot access password reset functionality.
+Verify reset URLs contain secure tokens.
+Verify expired reset links cannot be reused.
+Verify reset token cannot be reused after successful reset.
+Verify brute-force attempts are restricted.
+API Testing
+Verify Password Reset API hits the correct endpoint.
+Verify request payload is correct.
+Verify response payload is correct.
+Verify appropriate HTTP status codes are returned.
+Verify error responses are handled properly.
+Verify database password update occurs correctly.
+Network and Recovery Testing
+Verify password reset under slow network conditions.
+Verify behavior when network fails during reset.
+Verify no partial update occurs if network disconnects midway.
+Verify retry mechanism works correctly.
+Verify user receives proper error messages during failures.
+Performance Testing
+Verify response time is within requirements.
+Verify multiple password resets (50–100 attempts) are handled correctly.
+Verify notification delivery occurs within acceptable time.
+Browser and Compatibility Testing
+Verify password reset works across browsers.
+Verify functionality across environments (QA, UAT, Production).
+Verify screen responsiveness across resolutions.
+Verify keyboard navigation accessibility.
+Verify mobile and desktop compatibility.
+Database Validation
+Verify password is updated correctly in the database.
+Verify old password hash is replaced.
+Verify audit logs are created after password reset.
+Verify timestamp of password change is updated correctly.
+Important Missing Scenarios
+OTP/Reset Link Scenarios
+
+✅ Verify reset link expiration time.
+
+✅ Verify invalid or tampered reset links.
+
+✅ Verify OTP expiration.
+
+✅ Verify incorrect OTP validation.
+
+✅ Verify multiple OTP requests invalidate previous OTPs.
+
+Account Security
+
+✅ Verify account lock after multiple failed reset attempts.
+
+✅ Verify password history restriction (last 5 passwords cannot be reused).
+
+✅ Verify simultaneous password reset requests from multiple devices.
+
+Notification Testing
+
+✅ Verify email content correctness.
+
+✅ Verify SMS content correctness.
+
+✅ Verify duplicate notifications are not sent.
+
+Accessibility Testing
+
+✅ Verify Tab navigation.
+
+✅ Verify screen reader compatibility.
