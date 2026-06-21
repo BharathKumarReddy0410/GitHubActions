@@ -1,0 +1,220 @@
+SQLday3
+
+having clause:
+--------------
+having clause is used to filter groups after aggregate functions  sum(), min(), max(), count(), avg();
+
+
+Q1.
+Find departments having more than 5 employees.
+select department, count(*)  as Emp_count from Employees group by department having count(*)>5;
+
+Q2.
+Find customers whose total order amount is greater than 10000.
+select customerId, sum(amount) as Total_amount  from orders group by customerid having sum(amount)>10000;
+
+
+Case Statement:
+-----------------
+it works like if-else statement  in sql
+
+select Emp_name,salary,
+       case
+           when salary>=100000 then 'High'
+           when Salary>=50000 then 'Medium'
+           Else 'Low'
+       End AS salary_category
+       from employees;
+
+Q1.
+Display:   'Pass' if marks ≥ 40    'Fail' otherwise
+
+  select studentname,marks,
+   case 
+      when marks>=40 then 'Pass'
+      Else 'Fail'
+      End as Student_result
+    from students;
+
+Q2.
+Categorize orders:
+
+'Large' if amount > 5000
+'Medium' if amount between 2000 and 5000
+'Small' otherwise
+
+select customerid, sum(amount) as orders_amount,
+      case
+          when sum(amount)>5000 then 'Large'
+          when sum(amount)>=2000 and sum(amount)<=5000 then 'Medium'
+          Else 'Small'
+          End as orderCategory
+     from orders
+       group by customerid;
+
+
+Orders Table
+order_id	customer_id	amount
+1	101	5000
+2	102	2000
+3	101	3000
+4	103	7000
+5	102	4000
+
+Write a query to:
+
+Find each customer's total order amount.
+select customer_id, sum(amount) as Total_amount from orders group by customer_id;
+
+
+Show only customers whose total amount is greater than 5000.
+select customer_id, sum(amount) as Total_amount from orders group by customer_id having sum(amount)>5000;
+
+Add a column:
+'Premium' if total amount ≥ 8000
+'Regular' otherwise.
+             
+select customer_id, sum(amount) as Total_Amount,
+     case
+        when sum(amount)>=8000 then 'premium'
+        Else 'Regular'
+        End as Order_category
+     from orders
+ group by customer_id;
+   
+
+
+Order By:---
+-------------------------------
+order by is sued to sort the  result set into ascending or descending order
+ By default order by gives Ascending order
+ i we want to sort th result set in descendoing order used desc keyword;
+
+
+Display employees sorted by salary in ascending order.
+select * from employees order by salary;
+
+
+Display employees sorted by department and then by salary in descending order.
+select * from employees order by department, salary desc;
+
+
+Distinct:--------
+-----------------------------------
+it removes duplicate values form the result;
+
+
+find all unique departments from the Employees table.
+select Distinct department from employees;
+
+Find unique customer IDs from the Orders table.
+select Distinct customer_id from orders;
+
+1. Display all unique departments.
+select distinct department from employees;
+
+
+2. Display employees sorted by salary in descending order.
+select * from employees order by salary desc;
+
+3. Display employees sorted first by department and then by salary descending.
+select * from employees order by department ASC,salary desc;
+
+Table: Employees
+emp_id	emp_name	department	salary	age
+1	John	IT	50000	25
+2	Mary	HR	70000	30
+3	Sam	IT	45000	28
+4	Alice	HR	65000	27
+5	Bob	Finance	60000	32
+6	Tom	IT	55000	26
+
+
+Q1
+Find all unique departments.
+select Distinct department from employees;
+
+Q2
+Display employees sorted by salary in descending order.
+select * from employees order by salary desc;
+
+Q3
+Display employees whose salary is greater than 50000.
+select * from employees where salary>50000;
+
+Q4
+Find the total number of employees in each department.
+select department, count(*) as Emp_count from employees group by department;
+
+
+Q5
+Find departments having more than 2 employees.
+select department, count(*) as Emp_count from employees group by department having count(*)>2;
+
+Q6
+Find the average salary of each department.
+select department, avg(salary) as Average_salary from employees group by department;
+
+
+Q7
+Display salary category:
+select Emp_name,
+     case
+          when salary>=70000 then 'High'
+          when salary>50000 and salary<=69999 then 'Medium'
+          Else 'Low'
+          End as Salary_category
+     from employees;
+  
+
+Q8
+Find departments whose average salary is greater than 55000.
+select department, avg(salary) from employees group by department having avg(salary)>55000;
+
+
+Q9
+Display employees sorted first by department and then by salary descending.
+select Emp_name, department, salary from employees order by department Asc, salary Desc;
+
+
+Q10
+
+Display:
+"Young" if age < 30
+"Experienced" otherwise
+
+select Emp_name, age,
+     case
+         when age<30 then 'Young'
+         Else 'Experienced'
+         End as qualification
+     from employees;
+
+
+Orders Table
+order_id	customer_id	amount
+1	101	5000
+2	102	2000
+3	101	3000
+4	103	7000
+5	102	4000
+Q11
+Find total amount spent by each customer.
+select customer_id, sum(amount) as Total_amount from orders group by customer_id;
+
+Q12
+
+Show only customers whose total amount is greater than 5000.
+select customer_id, sum(amount) as Total_amount from orders group by customer_id having sum(amount)>5000;
+
+Q13
+
+Add a column:
+Premium if total amount >= 8000
+Regular otherwise
+select customer_id, sum(amount) as Total_amount,
+   case
+     when sum(amount)>=8000 then 'Premium'
+     Else 'Regular'
+     End as Purchase_category
+   from orders group by customer_id;

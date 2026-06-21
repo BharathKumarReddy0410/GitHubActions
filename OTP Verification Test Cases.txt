@@ -1,0 +1,365 @@
+OTP Verification Test Cases
+----------------------------------------
+Functional Test Cases
+------------------------
+Verify OTP is generated and sent to the registered email/mobile number.
+Verify the OTP length matches the requirement (e.g., 6 digits).
+Verify login is successful when a valid OTP is entered.
+Verify an appropriate error message is displayed for an invalid OTP.
+Verify an expired OTP cannot be used.
+Verify a previously used OTP cannot be reused.
+Verify OTP is sent to the correct user.
+Verify OTP validation time is as per requirements.
+Verify a new OTP is generated when "Resend OTP" is clicked.
+Verify only the latest OTP is valid after multiple resend requests.
+Verify OTP generation is blocked after maximum resend attempts.
+Verify maximum invalid attempts are limited.
+Verify appropriate error messages are displayed.
+
+
+Boundary Test Cases
+--------------------------
+Verify entering OTP with fewer digits than required.
+Verify entering OTP with more digits than required.
+Verify entering the exact valid length OTP.
+Verify OTP field accepts only numeric characters.
+Verify alphabets and special characters are rejected.
+
+
+Security Test Cases
+----------------------
+Verify OTP is masked if masking is a requirement.
+Verify OTP cannot be used on another device/session after successful verification.
+Verify OTP cannot be used after logout.
+Verify OTP cannot be reused after timeout.
+Verify brute-force attempts are blocked after maximum failures.
+
+
+Network and Reliability Test Cases
+-----------------------------------------------
+Verify OTP delivery under slow network conditions.
+Verify behavior when the network disconnects while entering OTP.
+Verify behavior when the system/browser is closed during OTP verification.
+Verify whether login needs to be restarted after browser refresh.
+Verify OTP delivery time meets SLA requirements.
+
+
+Cross Browser and Session Test Cases
+-----------------------------------------------
+Verify OTP screen works across multiple browsers.
+Verify multiple tabs handling.
+Verify session timeout during OTP entry.
+Verify Back and Refresh button behavior.
+
+Resend OTP
+-------------------
+Verify "Resend OTP" button is disabled for a few seconds to prevent abuse.
+Verify countdown timer is displayed correctly.
+Verify clicking Resend OTP multiple times quickly doesn't send duplicate OTPs.
+
+Copy/Paste
+-----------------
+Verify OTP can be pasted into the field.
+Verify spaces before or after OTP are trimmed.
+Verify auto-focus moves between OTP boxes.
+
+Empty Field Validation
+---------------------------
+Verify clicking Verify without entering OTP.
+Verify partially entered OTP cannot be submitted.
+
+Accessibility
+------------------------
+Verify OTP field supports keyboard navigation.
+Verify screen readers can access the OTP field.
+
+Performance
+---------------
+Verify OTP generation under high load.
+Verify simultaneous OTP requests from multiple users.
+
+Notification
+---------------
+Verify SMS/email content contains the correct OTP.
+Verify no duplicate notifications are received.
+
+Session Management
+----------------------
+Verify session expires after OTP timeout.
+Verify refreshing the page doesn't bypass OTP verification.
+Verify user is redirected correctly after successful verification.
+
+
+Scenario 3: Search with Filters ⭐⭐⭐⭐⭐
+
+Requirement:
+Users can search and apply filters (price, category, rating, etc.).
+
+TSearch with Filters Test Cases
+Functional Test Cases
+Verify the search functionality is enabled and accessible.
+Verify the filter option is available and functional.
+Verify searching with a valid keyword returns relevant results.
+Verify searching without entering a keyword.
+Verify searching with an invalid keyword displays "No Results Found".
+Verify only filters can be applied without entering a keyword.
+Verify multiple filters can be applied simultaneously.
+Verify search results match the applied filters.
+Verify removing filters restores the complete result set.
+Verify sorting works after applying filters.
+Verify sorting in ascending and descending order.
+Verify sorting based on different criteria (price, rating, date, etc.).
+Verify search is case-sensitive or case-insensitive according to requirements.
+Verify special characters in search keywords.
+Verify uppercase and lowercase keywords return expected results.
+Verify search results are displayed in the correct format.
+Verify proper message is displayed when no results are found.
+UI Test Cases
+Verify Search button and Filter controls are visible.
+Verify search and filter functionality across different browsers.
+Verify results are displayed properly without overlapping or broken UI.
+Verify loading indicator is displayed while fetching results.
+Verify pagination is displayed correctly if applicable.
+Navigation Test Cases
+Verify browser Back button restores previous search results.
+Verify browser Forward button navigates correctly.
+Verify refreshing the page retains or clears search criteria as per requirements.
+Verify URL reflects applied filters if supported.
+Performance Test Cases
+Verify response time under normal load.
+Verify response time when large amounts of data are returned.
+Verify search functionality under slow network conditions.
+Verify application behavior when network connection is lost during search.
+Verify retry mechanism after network restoration.
+Session Test Cases
+Verify behavior when session times out during search.
+Verify user is redirected to login after session expiry.
+Verify search URL cannot be accessed after logout.
+Verify search functionality in multiple browser tabs.
+Security Test Cases
+Verify unauthorized users cannot access search functionality.
+Verify SQL Injection attempts in search input.
+Example:
+' OR 1=1 --
+Verify Cross-Site Scripting (XSS) input handling.
+Example:
+<script>alert('test')</script>
+Verify search input length restrictions.
+Verify only supported characters are accepted.
+Important Test Cases Missing From Your List
+Boundary Value Test Cases
+Verify search with minimum character length.
+Verify search with maximum character length.
+Verify search with leading and trailing spaces.
+Verify search with spaces only.
+Filter Validation
+Verify invalid filter combinations.
+Verify filters are reset correctly.
+Verify duplicate filters are not applied.
+Pagination
+Verify search results across pages.
+Verify filters persist while navigating pages.
+Accessibility
+Verify keyboard navigation.
+Verify Tab key movement.
+Verify screen reader compatibility.
+
+
+
+
+
+Scenario 1: Session Timeout ⭐⭐⭐⭐⭐
+
+Requirement:
+User is automatically logged out after 15 minutes of inactivity.
+
+Session Timeout Test Cases
+Functional Test Cases
+1.
+
+Verify a session is created after successful login.
+
+2.
+
+Verify a session is not created with invalid credentials.
+
+3.
+
+Verify the session remains active within the configured timeout period.
+
+4.
+
+Verify the user is automatically logged out after 15 minutes of inactivity.
+
+5.
+
+Verify user activity at 14 minutes resets the timeout timer.
+
+6.
+
+Verify session expires exactly after the configured idle time.
+
+7.
+
+Verify session expiry during an ongoing operation (form submission).
+
+8.
+
+Verify a warning popup/message is displayed before session timeout (if applicable).
+
+9.
+
+Verify session information is cleared after logout.
+
+10.
+
+Verify user is redirected to the login page after session expiration.
+
+Browser and Navigation Test Cases
+11.
+
+Verify clicking the browser Back button after logout does not restore the session.
+
+12.
+
+Verify page refresh after logout does not reopen the session.
+
+13.
+
+Verify browser Forward button behavior after session expiration.
+
+14.
+
+Verify closing and reopening the browser invalidates the session.
+
+Multiple Tabs Test Cases
+15.
+
+Verify session behavior when multiple tabs are open.
+
+16.
+
+Verify session expiration in one tab logs out all tabs.
+
+17.
+
+Verify activity in one tab refreshes the timeout in other tabs (according to requirements).
+
+Cookie and Cache Test Cases
+18.
+
+Verify session cookies are deleted after logout.
+
+19.
+
+Verify cache does not expose protected pages after logout.
+
+20.
+
+Verify manually entering a previously visited URL redirects to the login page.
+
+Network Test Cases
+21.
+
+Verify behavior when the network disconnects before session timeout.
+
+22.
+
+Verify behavior when network connectivity is restored.
+
+23.
+
+Verify slow network conditions do not affect timeout calculation.
+
+File Upload Test Cases
+24.
+
+Verify session expiration during file upload.
+
+25.
+
+Verify partial upload behavior after session timeout.
+
+Power Failure / Browser Crash
+26.
+
+Verify session handling after system shutdown.
+
+27.
+
+Verify session handling after browser crash.
+
+Security Test Cases
+28.
+
+Verify expired sessions cannot be reused.
+
+29.
+
+Verify session ID changes after successful login.
+
+30.
+
+Verify session fixation attacks are prevented.
+
+31.
+
+Verify session tokens are invalid after logout.
+
+32.
+
+Verify users cannot access protected pages without logging in.
+
+Performance Test Cases
+33.
+
+Verify session timeout functionality with multiple concurrent users.
+
+34.
+
+Verify timeout behavior under heavy load.
+
+Missed Test Cases (Interviewer's Favorites)
+35.
+
+Verify "Remember Me" functionality with session timeout.
+
+36.
+
+Verify timeout countdown message is displayed properly.
+
+37.
+
+Verify session expiration while downloading a file.
+
+38.
+
+Verify session expiration during payment submission.
+
+39.
+
+Verify session timeout after password change.
+
+40.
+
+Verify session timeout after changing browser tabs.
+
+41.
+
+Verify session timeout on mobile browsers.
+
+42.
+
+Verify session timeout after system sleep mode.
+
+Mapping Your Original Ideas
+Your Idea	                          Professional Test Case
+Session broken or not	             Session expiration after idle time
+Session created with valid login Session creation after successful login
+Session logout after max time	        Auto logout after timeout
+Session during operation	           Expiry during form submission
+Browser back button	                 No access after logout
+Network slow	                    Timeout unaffected by network speed
+Cookies cleared                  	Session cookies deleted
+Multiple tabs	                       Synchronization across tabs
+Power off	                        Session handling after shutdown
