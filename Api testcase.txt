@@ -1,0 +1,132 @@
+Scenario 1: User Registration API
+
+A web application provides a User Registration API (POST /api/register) that allows new users to create an account. The request contains four fields: username, email, password, and age. The username field is mandatory, should contain between 5 and 20 characters, and must be unique across all users. The email field is mandatory, should follow a valid email format, and should also be unique. The password field is mandatory and must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character. The age field is optional, but if provided, its value should be between 18 and 60 years inclusive. On successful registration, the API returns a success message along with the generated user ID. If validation fails or a duplicate username or email already exists, an appropriate error message should be returned. The API should also handle invalid inputs, null values, special characters, SQL injection attempts, and unusually large input values gracefully without affecting application security or performance.
+
+| TC_ID  | Test Scenario                                                                               | Expected Result                                                        |
+| ------ | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| TC_001 | Verify that user registers with valid details                                               | User should be registered successfully                                 |
+| TC_002 | Verify that registration API rejects invalid request methods (GET, PUT, DELETE)             | Method not allowed error should be displayed                           |
+| TC_003 | Verify registration with empty fields                                                       | Appropriate validation messages should be displayed                    |
+| TC_004 | Verify registration with username length less than minimum allowed length                   | User should not be registered and validation error should be displayed |
+| TC_005 | Verify registration with invalid special characters in username                             | Appropriate validation message should be displayed                     |
+| TC_006 | Verify registration with all fields empty                                                   | Mandatory field validation messages should be displayed                |
+| TC_007 | Verify username validation using Boundary Value Analysis (4,5,6,19,20,21 characters)        | Lengths 5 to 20 should be accepted, others rejected                    |
+| TC_008 | Verify password length validation using Boundary Value Analysis                             | Password should be accepted or rejected according to requirements      |
+| TC_009 | Verify password with only alphabets, only digits, only special characters, and combinations | Password should satisfy all validation rules                           |
+| TC_010 | Verify registration with already registered email                                           | Duplicate email error should be displayed                              |
+| TC_011 | Verify registration with duplicate username and email                                       | User should not be registered                                          |
+| TC_012 | Verify registration without age                                                             | User should be registered successfully                                 |
+| TC_013 | Verify age validation using Boundary Value Analysis (17,18,19,59,60,61)                     | Age 18-60 should be accepted                                           |
+| TC_014 | Verify registration with invalid content type such as XML                                   | Appropriate content type error should be displayed                     |
+| TC_015 | Verify registration with PDF, XML, Plain Text request payload                               | Request should be rejected                                             |
+| TC_016 | Verify registration with Content-Type application/json                                      | User should be registered successfully                                 |
+| TC_017 | Verify registration under slow network conditions                                           | Request should be processed successfully                               |
+| TC_018 | Verify registration when network interruption occurs                                        | Appropriate error should be displayed                                  |
+| TC_019 | Verify correct response status code after successful registration                           | 200/201 status code should be returned                                 |
+| TC_020 | Verify response message after successful registration                                       | Success message should be returned                                     |
+| TC_021 | Verify response time meets application requirements                                         | Response time should be within acceptable limits                       |
+| TC_022 | Verify response schema data types                                                           | Response data types should be correct                                  |
+| TC_023 | Verify response schema structure                                                            | Schema should match API specification                                  |
+| TC_024 | Verify request payload data types                                                           | Validation errors should be displayed for invalid data types           |
+| TC_025 | Verify sensitive data is encrypted during transmission                                      | Data should be transmitted securely                                    |
+| TC_026 | Verify confirmation notification/email after successful registration                        | Notification should be received                                        |
+| TC_027 | Verify success message after registration                                                   | Appropriate success message should be displayed                        |
+| TC_028 | Verify cookies/session creation after registration                                          | Cookies/session should be created if applicable                        |
+| TC_029 | Verify duplicate username/email registration                                                | Duplicate records should not be created                                |
+| TC_030 | Verify direct URL access to database resources                                              | Unauthorized access should be restricted                               |
+| TC_031 | Verify registration with invalid email format                                               | Validation error should be displayed                                   |
+| TC_032 | Verify email field accepts only valid email formats                                         | Invalid formats should be rejected                                     |
+| TC_033 | Verify SQL Injection attacks are prevented                                                  | Malicious input should be rejected                                     |
+| TC_034 | Verify XSS attacks are prevented                                                            | Script execution should be prevented                                   |
+| TC_035 | Verify response message correctness                                                         | Correct response message should be returned                            |
+| TC_036 | Verify response content type and payload                                                    | Content type and payload should be correct                             |
+| TC_037 | Verify successful registration and corresponding messages                                   | Appropriate messages should be displayed                               |
+| TC_038 | Verify registration with 100 simultaneous users                                             | System should handle concurrent requests successfully                  |
+| TC_039 | Verify duplicate requests from multiple browsers                                            | Only one account should be created                                     |
+| TC_040 | Verify multiple registration attempts from different tabs                                   | Duplicate registration should be prevented                             |
+| TC_041 | Verify API accepts only POST method                                                         | Other methods should be rejected                                       |
+| TC_042 | Verify registration without mandatory headers                                               | Appropriate error should be displayed                                  |
+| TC_043 | Verify request with unknown or additional fields                                            | Request should be handled according to specification                   |
+| TC_044 | Verify leading and trailing spaces in username/email                                        | Spaces should be trimmed or validation applied                         |
+| TC_045 | Verify username case sensitivity                                                            | Behavior should follow requirements                                    |
+| TC_046 | Verify email normalization (uppercase/lowercase)                                            | Duplicate emails should be prevented                                   |
+| TC_047 | Verify maximum payload size                                                                 | Request should be processed or rejected gracefully                     |
+| TC_048 | Verify registration when database is unavailable                                            | Internal server error should be displayed                              |
+| TC_049 | Verify page refresh after submission does not create duplicate accounts                     | Only one account should be created                                     |
+| TC_050 | Verify user data is correctly stored in database                                            | Database records should match request data                             |
+| TC_051 | Verify password is not returned in response                                                 | Password should not be exposed                                         |
+| TC_052 | Verify sensitive information is masked in logs                                              | Sensitive data should not be visible                                   |
+| TC_053 | Verify HTTPS communication                                                                  | Data should be transmitted securely                                    |
+| TC_054 | Verify API timeout behavior                                                                 | Timeout response should be handled properly                            |
+| TC_055 | Verify registration with 1000 concurrent users                                              | Application should handle load successfully                            |
+| TC_056 | Verify API rate limiting                                                                    | Excess requests should be blocked                                      |
+| TC_057 | Verify support for Unicode or international characters                                      | Behavior should match requirements                                     |
+| TC_058 | Verify email verification process after registration                                        | Verification email should be sent                                      |
+| TC_059 | Verify audit log creation after registration                                                | Audit entry should be generated                                        |
+| TC_060 | Verify API version compatibility                                                            | API should function according to version specification                 |
+Scenario 2: Login API
+
+A web application exposes a Login API (POST /api/login) that authenticates registered users. The request requires an email and a password. Both fields are mandatory. The email must belong to a registered user, and the password should exactly match the stored password, including case sensitivity. If invalid credentials are entered, an error message should be returned. The application should lock the account after five consecutive failed login attempts, and the user should not be able to log in again for the next 30 minutes. After the lock duration expires, the user should be able to log in successfully using valid credentials. Upon successful authentication, the API generates and returns a JWT token. The system should properly handle scenarios such as blank fields, null values, invalid email formats, SQL injection attempts, leading and trailing spaces, extremely long input values, and multiple concurrent login requests. The generated token should be unique, valid, and securely returned in the response.
+
+| TC_ID  | Test Scenario                                                     | Test Data                                   | Expected Result                                                   |
+| ------ | ----------------------------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------- |
+| TC_001 | Verify login with valid credentials                               | Valid email and password                    | User should be logged in successfully and redirected to dashboard |
+| TC_002 | Verify login with invalid credentials                             | Invalid email/password                      | Appropriate error message should be displayed                     |
+| TC_003 | Verify login with null values                                     | Null email/password                         | Validation error should be displayed                              |
+| TC_004 | Verify login with valid email and invalid password and vice versa | Valid email + invalid password              | Login should fail                                                 |
+| TC_005 | Verify login with empty fields                                    | Empty email/password                        | Mandatory field validation should be displayed                    |
+| TC_006 | Verify login with invalid special characters                      | Invalid input                               | Validation error should be displayed                              |
+| TC_007 | Verify account lock after 5 unsuccessful attempts                 | Invalid password 5 times                    | Account should be locked                                          |
+| TC_008 | Verify login with incorrect HTTP method                           | GET/PUT/DELETE                              | Method Not Allowed error should be returned                       |
+| TC_009 | Verify login with incorrect endpoint URL                          | Invalid endpoint                            | 404 Not Found should be returned                                  |
+| TC_010 | Verify login with invalid headers                                 | Missing Content-Type                        | Request should be rejected                                        |
+| TC_011 | Verify login with multiple payload data                           | Duplicate payload                           | Request should be handled properly                                |
+| TC_012 | Verify login with incorrect username and password                 | Invalid credentials                         | Login should fail                                                 |
+| TC_013 | Verify session and JWT token generation after successful login    | Valid credentials                           | Session and JWT token should be generated                         |
+| TC_014 | Verify JWT token format and length                                | Generated token                             | Token should follow correct format                                |
+| TC_015 | Verify session timeout after idle period                          | Inactive session                            | User should be logged out automatically                           |
+| TC_016 | Verify expired JWT token                                          | Expired token                               | Unauthorized response should be returned                          |
+| TC_017 | Verify access to resources after logout using old token           | Old token                                   | Access should be denied                                           |
+| TC_018 | Verify account lock timestamp                                     | 5 invalid attempts                          | Lock timestamp should be stored                                   |
+| TC_019 | Verify login after lock duration expires                          | Wait 30 minutes                             | User should be able to login successfully                         |
+| TC_020 | Verify request payload data types                                 | Invalid data types                          | Validation error should be displayed                              |
+| TC_021 | Verify response payload after successful login                    | Valid credentials                           | JWT token and success message should be returned                  |
+| TC_022 | Verify token data type                                            | JWT token                                   | Token type should be correct                                      |
+| TC_023 | Verify sensitive information is encrypted                         | HTTPS request                               | Sensitive data should be encrypted                                |
+| TC_024 | Verify HTTPS secure communication                                 | Secure connection                           | Data should be transmitted securely                               |
+| TC_025 | Verify successful login under slow network                        | Slow network                                | Session should be created successfully                            |
+| TC_026 | Verify session behavior during network interruption               | Network disconnect                          | Session should be handled properly                                |
+| TC_027 | Verify access with invalid token                                  | Invalid token                               | Unauthorized response should be returned                          |
+| TC_028 | Verify multiple clicks on Login button                            | Multiple requests                           | Only one session should be created                                |
+| TC_029 | Verify multiple login requests with same credentials              | Duplicate requests                          | Duplicate sessions should not be created                          |
+| TC_030 | Verify login from multiple browser tabs                           | Multiple tabs                               | Behavior should follow requirements                               |
+| TC_031 | Verify SQL Injection attack                                       | SQL payload                                 | Injection should be prevented                                     |
+| TC_032 | Verify XSS attack                                                 | Script payload                              | Script execution should be prevented                              |
+| TC_033 | Verify response payload size                                      | Large payload                               | System should handle correctly                                    |
+| TC_034 | Verify appropriate error messages                                 | Invalid input                               | Correct error message should be displayed                         |
+| TC_035 | Verify access to session after logout                             | Logged out session                          | Access should be denied                                           |
+| TC_036 | Verify login from two systems simultaneously                      | Same credentials                            | Session behavior should follow requirement                        |
+| TC_037 | Verify logout functionality                                       | Logout request                              | Session should be terminated                                      |
+| TC_038 | Verify trimming of leading and trailing spaces                    | " [user@gmail.com](mailto:user@gmail.com) " | Spaces should be trimmed                                          |
+| TC_039 | Verify only POST method is accepted                               | GET/PUT/DELETE                              | Request should be rejected                                        |
+| TC_040 | Verify response status code after successful login                | Valid credentials                           | 200 status code should be returned                                |
+| TC_041 | Verify response payload content type                              | application/json                            | Content type should be correct                                    |
+| TC_042 | Verify invalid URL access                                         | Wrong URL                                   | 404 response should be returned                                   |
+| TC_043 | Verify login under heavy load                                     | Multiple users                              | Application should handle load                                    |
+| TC_044 | Verify login with 100 concurrent users                            | Concurrent requests                         | System should perform correctly                                   |
+| TC_045 | Verify login attempt during account lock period                   | Locked account                              | Login should fail                                                 |
+| TC_046 | Verify automatic unlock after lock duration                       | Wait 30 minutes                             | Login should succeed                                              |
+| TC_047 | Verify response time                                              | Valid request                               | Response time should meet requirement                             |
+| TC_048 | Verify login with invalid data types                              | Numeric email                               | Validation error should be displayed                              |
+| TC_049 | Verify cookies are created after login                            | Valid login                                 | Session cookies should be created                                 |
+| TC_050 | Verify token expiration behavior                                  | Expired token                               | Access should be denied                                           |
+| TC_051 | Verify token validity after logout                                | Logged out token                            | Token should become invalid                                       |
+| TC_052 | Verify session interruption during request                        | Network issue                               | Session should be handled gracefully                              |
+| TC_053 | Verify case sensitivity of password                               | Different password case                     | Login should fail                                                 |
+| TC_054 | Verify login with invalid email format                            | abcgmail.com                                | Validation error should be displayed                              |
+| TC_055 | Verify login with extremely long input values                     | Large email/password                        | Validation error should be displayed                              |
+| TC_056 | Verify account lock counter reset after successful login          | Successful login after failures             | Counter should reset                                              |
+| TC_057 | Verify JWT token uniqueness                                       | Multiple logins                             | Unique tokens should be generated                                 |
+| TC_058 | Verify sensitive data is not exposed in response                  | Successful login                            | Password should not be returned                                   |
+| TC_059 | Verify response schema                                            | Valid login                                 | Response schema should match API specification                    |
+| TC_060 | Verify login audit logs are generated                             | Successful login                            | Audit entry should be created                                     |
